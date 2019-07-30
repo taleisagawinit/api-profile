@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import MaterialIcon from 'material-icons-react'
+import moment from 'moment'
 
 export default props => {
   const [name, setName] = useState('')
@@ -21,14 +22,9 @@ export default props => {
     })
     
     axios.get("https://api.github.com/users/taleisagawinit/repos").then(resp2 => {
-      let repos = resp2.data
-      Object.values(repos).forEach(function(item) {
-        setrepoNames(repoNames.push(item.name))
-      });
-      Object.values(repoNames).map(function(item){ 
-          console.log(item)
-        })
-    })
+      // let repos = resp2.data
+      setrepoNames(resp2.data)
+  })
   }, [])
 
   return (
@@ -54,12 +50,19 @@ export default props => {
             <li>following</li>
           </ul>
         </div>
+        <input type="text" placeholder="Find a repository..." className="find"></input>
         <div className="repoList">
           <ul>
-          {Object.values(repoNames).map(function(item){ 
-            return <li>{item}</li>
+            {Object.values(repoNames).map(function(item) {
+              return (
+              <li key={item.id}>
+                <span className="item">{item.name}</span>
+                <span className="language">{item.language}
+                  <span className="update">Updated {moment(`${item.updated_at.slice(0, 10)}`, "YYYY-MM-DD").fromNow()}</span>
+                </span>
+              </li>
+              )
             })}
-            <li>repos go here</li>
           </ul>
         </div>
         

@@ -1,5 +1,5 @@
 html {box-sizing:border-box;}
-*, *::before, *::after {box-sizing:inherit; font-family: Arial, Helvetica, sans-serif}
+*, *::before, *::after {box-sizing:inherit; font-family: Arial, Helvetica, sans-serif; color:rgb(88, 87, 87)}
 
 .container {
   width: 1000px;
@@ -25,7 +25,7 @@ html {box-sizing:border-box;}
 }
 
 .profile p:nth-child(2) {
-  font-size:24px;
+  font-size:20px;
 }
 
 .repos {
@@ -42,6 +42,7 @@ html {box-sizing:border-box;}
 .repos .category ul li {
   margin: 0 10px;
   font-size: 14px;
+  text-transform: capitalize;
 }
 
 .repos .category ul li:nth-child(2) {
@@ -50,7 +51,29 @@ html {box-sizing:border-box;}
 
 .repos .repoList ul li {
   list-style: none;
-  color: blue;
-  font-size: 24px;
-  border-bottom: 2px solid lightgray
+  font-size: 20px;
+  border-bottom: 2px solid lightgray;
+  height: 100px;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.repos .find {
+  width:500px;
+  padding: 5px;
+}
+
+.repos .repoList .language {
+  width: 100%;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.repos .repoList .item {
+  color: rgb(55, 100, 248);
+}
+
+.repos .repoList .update {
+  padding: 0 10px;
 }
